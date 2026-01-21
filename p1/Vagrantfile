@@ -16,7 +16,7 @@ Vagrant.configure("2") do |config|
     end
 
     server.vm.provision "file",
-      source: "../shared_vm_key.pub",
+      source: "../../shared_vm_key.pub",
       destination: "/home/vagrant/.ssh/shared_vm_key.pub"
 
     server.vm.provision "shell", inline: <<-SHELL
