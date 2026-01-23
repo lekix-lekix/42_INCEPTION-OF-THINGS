@@ -12,12 +12,12 @@ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scrip
 chmod 700 get_helm.sh
 ./get_helm.sh
 
-kubectl apply -f ./deployment.yaml
-kubectl apply -f ./service.yaml
+kubectl apply -f ./deployment-1.yaml
+kubectl apply -f ./deployment-2.yaml
+kubectl apply -f ./deployment-3.yaml
+kubectl apply -f ./service-1.yaml
+kubectl apply -f ./service-2.yaml
+kubectl apply -f ./service-3.yaml
 kubectl apply -f ./ingress.yaml
 
 export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-
-helm repo add traefik https://helm.traefik.io/traefik
-helm repo update
-helm install traefik traefik/traefik
