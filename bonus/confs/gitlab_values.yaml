@@ -1,0 +1,53 @@
+# global:
+#   edition: ce
+#   hosts:
+#     domain: gitlab.localhost
+#     https: false  # Pas de SSL en local
+#   shell:
+#     port: 22
+  
+#   ingress:
+#     configureCertmanager: false
+#     class: traefik  # Utiliser Traefik au lieu de nginx
+#     annotations:
+#       kubernetes.io/ingress.class: traefik
+
+#   certmanager:
+#     enabled: false
+
+# nginx-ingress:
+#   enabled: false
+
+# certmanager-issuer:
+#   enabled: false
+
+# gitlab:
+#   gitlab-shell:
+#     service:
+#       type: LoadBalancer
+#       # nodePort: 30022
+
+global:
+  edition: ce
+  hosts:
+    domain: gitlab.localhost
+    https: false
+  shell:
+    port: 30022
+  ingress:
+    configureCertmanager: false
+    class: traefik
+    annotations:
+      kubernetes.io/ingress.class: traefik
+
+# certmanager:
+  # install: false
+
+nginx-ingress:
+  enabled: false
+
+gitlab:
+  gitlab-shell:
+    service:
+      type: NodePort
+      nodePort: 30022

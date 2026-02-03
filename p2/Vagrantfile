@@ -15,46 +15,45 @@ Vagrant.configure("2") do |config|
       lv.video_vram = 16
       lv.nested = true
       lv.cpu_mode = 'host-passthrough'
-#      lv.memory_backing :access, :mode => "shared"
     end
 
     #####
 
     server.vm.provision "file",
-      source: "./app-one/deployment.yaml",
+      source: "./confs/app-one/deployment.yaml",
       destination: "/home/vagrant/deployment-1.yaml"
 
     server.vm.provision "file",
-      source: "./app-one/service.yaml",
+      source: "./confs/app-one/service.yaml",
       destination: "/home/vagrant/service-1.yaml"
 
     #####
 
     server.vm.provision "file",
-      source: "./app-two/deployment.yaml",
+      source: "./confs/app-two/deployment.yaml",
       destination: "/home/vagrant/deployment-2.yaml"
 
     server.vm.provision "file",
-      source: "./app-two/service.yaml",
+      source: "./confs/app-two/service.yaml",
       destination: "/home/vagrant/service-2.yaml"
 
     #####
       
 
     server.vm.provision "file",
-      source: "./app-three/deployment.yaml",
+      source: "./confs/app-three/deployment.yaml",
       destination: "/home/vagrant/deployment-3.yaml"
 
     server.vm.provision "file",
-      source: "./app-three/service.yaml",
+      source: "./confs/app-three/service.yaml",
       destination: "/home/vagrant/service-3.yaml"
 
     #####
 
     server.vm.provision "file",
-      source: "./ingress.yaml",
+      source: "./confs/ingress.yaml",
       destination: "/home/vagrant/ingress.yaml"
 
-    server.vm.provision "shell", path: "server_init.sh"
+    server.vm.provision "shell", path: "scripts/server_init.sh"
   end
 end

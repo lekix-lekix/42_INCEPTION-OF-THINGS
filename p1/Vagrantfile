@@ -16,7 +16,7 @@ Vagrant.configure("2") do |config|
     end
 
     server.vm.provision "file",
-      source: "../../shared_vm_key.pub",
+      source: "~/shared_vm_key.pub",
       destination: "/home/vagrant/.ssh/shared_vm_key.pub"
 
     server.vm.provision "shell", inline: <<-SHELL
@@ -27,7 +27,7 @@ Vagrant.configure("2") do |config|
       chmod 600 /home/vagrant/.ssh/authorized_keys
     SHELL
 
-    server.vm.provision "shell", path: "server.sh"
+    server.vm.provision "shell", path: "scripts/server.sh"
   end
 
   config.vm.define "mamoulinSW" do |worker|
@@ -39,7 +39,7 @@ Vagrant.configure("2") do |config|
     end
 
     worker.vm.provision "file", 
-      source: "../shared_vm_key",
+      source: "~/shared_vm_key",
       destination: "/home/vagrant/.ssh/shared_vm_key"
  
     worker.vm.provision "shell", inline: <<-SHELL
@@ -47,6 +47,6 @@ Vagrant.configure("2") do |config|
       chmod 600 /home/vagrant/.ssh/shared_vm_key
     SHELL
 
-    worker.vm.provision "shell", path: "worker.sh", args: [SERVER_IP, SERVER_NAME]
+    worker.vm.provision "shell", path: "scripts/worker.sh", args: [SERVER_IP, SERVER_NAME]
   end
 end

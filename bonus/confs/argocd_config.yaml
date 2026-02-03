@@ -1,0 +1,68 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app
+  namespace: argocd
+spec:
+  destination:
+    namespace: dev
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: .
+    repoURL: http://gitlab-webservice-default.gitlab.svc.cluster.local:8181/root/iot_part3_mamoulin.git
+    targetRevision: main
+  syncPolicy:
+    automated: 
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+
+#############
+
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: gitlab
+#   namespace: argocd
+# spec:
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: gitlab
+#   project: default
+#   source:
+#     repoURL: https://charts.gitlab.io/
+#     chart: gitlab
+#     targetRevision: 9.8.2
+#     helm:
+#       valuesObject:
+#         global:
+#           edition: ce
+#           hosts:
+#             domain: gitlab.localhost
+#             https: false
+#           shell:
+#             port: 22
+#           ingress:
+#             configureCertmanager: false
+#             class: traefik
+#             annotations:
+#               kubernetes.io/ingress.class: traefik
+#         nginx-ingress:
+#           enabled: false
+#         gitlab:
+#           migrations:
+#             enabled: true
+#           gitlab-shell:
+#             service:
+#               type: NodePort
+#               nodePort: 30022
+#         webservice:
+#           deployment:
+#   syncPolicy:
+#     automated:
+#       prune: false
+#       selfHeal: true
+#     syncOptions:
+#       - CreateNamespace=true
