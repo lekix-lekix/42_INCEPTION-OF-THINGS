@@ -1,8 +1,6 @@
 # 🧠 Inception of Things
  
-> *"We need to go deeper."* — Cobb, Inception (2010)
- 
-A deep dive into **Kubernetes** and **DevOps automation** through a series of progressive, containerized environments — powered by **K3s**, **K3d**, **Argo CD**, and **GitOps** principles.
+A deep dive into **Kubernetes** and **DevOps automation** through a series of progressive, containerized environments powered by **K3s**, **K3d**, **Argo CD**, and **GitOps** principles.
  
 ---
  
@@ -28,7 +26,7 @@ K3s is a lightweight, production-ready Kubernetes distribution by Rancher. It's 
 </details>
 <details>
 <summary><strong>What is K3d?</strong></summary>
-K3d is a wrapper that runs K3s inside Docker containers — enabling fast, local Kubernetes clusters with no VM overhead. Ideal for development and testing.
+K3d is a wrapper that runs K3s inside Docker containers enabling fast, local Kubernetes clusters with no VM overhead. Ideal for development and testing.
  
 </details>
 <details>
@@ -38,7 +36,7 @@ Argo CD is a declarative GitOps continuous delivery tool for Kubernetes. It watc
 </details>
 <details>
 <summary><strong>What is GitOps?</strong></summary>
-GitOps is an operational model where Git is the **single source of truth** for infrastructure and application configuration. All changes go through Git — the cluster reconciles itself to match.
+GitOps is an operational model where Git is the **single source of truth** for infrastructure and application configuration. All changes go through Git, the cluster reconciles itself to match.
  
 </details>
 
